@@ -6,6 +6,7 @@ app/logs/*
 app/config/parameters.ini
 
 #emacs
+*~
 *#
 .#*
 .emacs-project

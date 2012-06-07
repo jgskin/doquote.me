@@ -1,0 +1,7 @@
+parameters:
+#    kpb_user.example.class: Kpb\UserBundle\Example
+
+services:
+#    kpb_user.example:
+#        class: %kpb_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -52,9 +52,20 @@ doctrine:
 swiftmailer:
     transport: %mailer_transport%
     host:      %mailer_host%
+    port:      %mailer_port%
+    encryption: %mailer_encryption%
     username:  %mailer_user%
     password:  %mailer_password%
 
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+
+#fos user bundle
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Kpb\UserBundle\Entity\User
+    resetting:
+        email:
+            template: FOSUserBundle:Resetting:email.txt.twig
