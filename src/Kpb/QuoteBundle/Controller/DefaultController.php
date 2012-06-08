@@ -5,9 +5,14 @@ namespace Kpb\QuoteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Kpb\QuoteBundle\Entity\Quote;
 use Symfony\Component\HttpFoundation\Request;
+use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class DefaultController extends Controller
 {
+    /**
+     * @Secure(roles="IS_AUTHENTICATED_FULLY")
+     */
     function createAction(Request $request)
     {
         $quote = new Quote();
@@ -17,10 +22,18 @@ class DefaultController extends Controller
         
         return $this->getWorkedFormResponse($quote, $request);
     }
-
+    
+    /**
+     * @Secure(roles="IS_AUTHENTICATED_FULLY")
+     */
     function editAction(Request $request, $quote_id)
     {
         $quote = $this->getQuote($quote_id);
+
+        //only the author should edit
+        if ($quote->getAuthor() !== $this->get('security.context')->getToken()->getUser()) {
+            throw new AccessDeniedException();
+        }
         
         return $this->getWorkedFormResponse($quote, $request);
     }
@@ -37,7 +50,7 @@ class DefaultController extends Controller
         $quote = $this->get('doctrine')->getRepository('KpbQuoteBundle:Quote')->find($quote_id);
 
         if (!$quote) {
-            return $this->createNotFoundException('No quote found for id '. $quote_id);
+            throw $this->createNotFoundException('No quote found for id '. $quote_id);
         }
 
         return $quote;
