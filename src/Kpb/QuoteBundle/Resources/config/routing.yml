@@ -1,0 +1,9 @@
+quote_create:
+    pattern:  /create
+    defaults: { _controller: KpbQuoteBundle:Default:create }
+quote_edit:
+    pattern: /edit/{quote_id}
+    defaults: { _controller: KpbQuoteBundle:Default:edit }
+quote_show:
+    pattern: /show/{quote_id}
+    defaults: { _controller: KpbQuoteBundle:Default:show }

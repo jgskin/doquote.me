@@ -21,6 +21,7 @@ class AppKernel extends Kernel
 	    //non sf standard
 	    new FOS\UserBundle\FOSUserBundle(),
             new Kpb\UserBundle\KpbUserBundle(),
+            new Kpb\QuoteBundle\KpbQuoteBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
