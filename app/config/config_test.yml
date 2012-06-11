@@ -12,3 +12,12 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+#http login for test env
+security:
+    encoders:
+        Kpb\UserBundle\Entity\User: plaintext
+    firewalls:
+        main:
+            http_basic:
+                provider: test_provider

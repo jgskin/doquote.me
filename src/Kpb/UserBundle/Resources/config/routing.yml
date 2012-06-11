@@ -1,3 +1,0 @@
-KpbUserBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: KpbUserBundle:Default:index }

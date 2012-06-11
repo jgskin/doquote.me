@@ -2,10 +2,6 @@ KpbQuoteBundle:
     resource: "@KpbQuoteBundle/Resources/config/routing.yml"
     prefix:   /
 
-KpbUserBundle:
-    resource: "@KpbUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 #fos user bundle
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

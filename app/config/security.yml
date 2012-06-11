@@ -2,7 +2,9 @@ security:
     providers:
         fos_userbundle:
             id: fos_user.user_manager
-
+        test_provider:
+            users:
+                test: { password: test }
     encoders:
         "FOS\UserBundle\Model\UserInterface": sha512
 
